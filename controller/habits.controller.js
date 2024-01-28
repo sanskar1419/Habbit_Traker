@@ -1,6 +1,7 @@
 import path from "path";
 import HabitRepository from "../repository/habit.repository.js";
 import HabitModel from "../model/habits.model.js";
+import { title } from "process";
 
 export default class FitnessController {
   constructor() {
@@ -9,7 +10,10 @@ export default class FitnessController {
   async getAllhabits(req, res) {
     try {
       const habits = await this.habitRepository.get();
-      res.sendFile(path.join(path.resolve(), "views", "habits.html"));
+      res.status(200).send(habits);
+      // res.render("habits", {
+      //   title: "Habits",
+      // });
     } catch (err) {
       console.log(err);
       throw new Error("Something Went Wrong");

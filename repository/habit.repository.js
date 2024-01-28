@@ -34,8 +34,8 @@ export default class HabitRepository {
   }
   async get() {
     try {
-      let habits = await Habit.find({});
-      console.log(habits);
+      let habits = await Habit.find({}).populate("habitStatus");
+      // console.log(habits[0].habitStatus);
       return habits;
     } catch (err) {
       console.log(err);
