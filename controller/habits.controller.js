@@ -23,17 +23,16 @@ export default class FitnessController {
   async addNewHabit(req, res) {
     try {
       let { habitName, totalTargetDays, weeklyTarget } = req.body;
-      console.log(habitName);
-      console.log(totalTargetDays);
-      console.log(weeklyTarget);
-      // const newHabit = new HabitModel(habitName, totalTargetDays, weeklyTarget);
-      // const result = await this.habitRepository.add(newHabit);
-      // if (!result) {
-      //   return res.status(201).send("Record already Exist");
-      // } else {
-      //   return res.status(201).send(result);
-      // }
-      res.redirect("back");
+      // console.log(habitName);
+      // console.log(totalTargetDays);
+      // console.log(weeklyTarget);
+      const newHabit = new HabitModel(habitName, totalTargetDays, weeklyTarget);
+      const result = await this.habitRepository.add(newHabit);
+      if (!result) {
+        return res.status(201).send("Record already Exist");
+      } else {
+        res.redirect("back");
+      }
     } catch (err) {
       console.log(err);
       throw new Error("Something Went Wrong");
@@ -42,9 +41,12 @@ export default class FitnessController {
 
   async deleteExistingHabit(req, res) {
     try {
+      // console.log("Request is recieved");
       const { id } = req.query;
+      // console.log(id);
       await this.habitRepository.delete(id);
-      res.send("Habit Deleted");
+      res.redirect("back");
+      // res.send("Habit Deleted");
     } catch (err) {
       console.log(err);
       throw new Error("Something Went Wrong");

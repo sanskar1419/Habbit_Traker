@@ -41,6 +41,9 @@
           Completed : <%= habit.habitStatus.filter((obj) => obj.dateStatus ==
           'Started').length %>
         </h6>
+        <button class="btn btn-dark" onclick="deleteProduct('<%= habit.id %>')">
+          Delete Task
+        </button>
       </div>
     </div>
     <%})%>
