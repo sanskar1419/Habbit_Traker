@@ -22,16 +22,18 @@ export default class FitnessController {
 
   async addNewHabit(req, res) {
     try {
-      // console.log(req.body);
       let { habitName, totalTargetDays, weeklyTarget } = req.body;
-      weeklyTarget = weeklyTarget.split(",");
-      const newHabit = new HabitModel(habitName, totalTargetDays, weeklyTarget);
-      const result = await this.habitRepository.add(newHabit);
-      if (!result) {
-        return res.status(201).send("Record already Exist");
-      } else {
-        return res.status(201).send(result);
-      }
+      console.log(habitName);
+      console.log(totalTargetDays);
+      console.log(weeklyTarget);
+      // const newHabit = new HabitModel(habitName, totalTargetDays, weeklyTarget);
+      // const result = await this.habitRepository.add(newHabit);
+      // if (!result) {
+      //   return res.status(201).send("Record already Exist");
+      // } else {
+      //   return res.status(201).send(result);
+      // }
+      res.redirect("back");
     } catch (err) {
       console.log(err);
       throw new Error("Something Went Wrong");

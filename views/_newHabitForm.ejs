@@ -1,0 +1,68 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Let's Add A New Habit
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/habit/" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="name" class="form-label">Habit Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="habitName"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="totalTargetDays" class="form-label"
+              >Total Targeted Days</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="totalTargetDays"
+              name="totalTargetDays"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="weeklyTarget" class="form-label"
+              >Weekly Targeted Days</label
+            >
+            <select name="weeklyTarget" id="weeklyTarget" multiple>
+              <option value="Sunday">Sunday</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+            </select>
+          </div>
+          <div class="form-btn-container">
+            <button type="submit" class="btn btn-dark">Add Habit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
