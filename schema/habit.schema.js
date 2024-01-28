@@ -11,10 +11,16 @@ export const habitSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    weeklyTarget: {
-      type: Number,
+    weeklyTargetDays: {
+      type: Array,
       required: true,
     },
+    habitStatus: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Status",
+      },
+    ],
   },
   {
     timestamps: true,
