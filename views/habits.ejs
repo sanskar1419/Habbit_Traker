@@ -52,32 +52,34 @@
     </div>
   </div>
   <div class="allHabit">
+    <% habits.forEach(habit => { %>
     <div class="card text-center text-bg-primary mb-3">
       <div class="card-header text-dark">
-        <h6>Posted Date : 27-January-2024</h6>
+        <h6>Posted Date : <%= habit.createdAt %></h6>
         <div class="target-days-container">
+          <% habit.weeklyTargetDays.forEach( dayName => { %>
           <div class="day-name-container">
-            <p>Sun</p>
+            <p><%= dayName.slice(0,3) %></p>
           </div>
-          <div class="day-name-container">
-            <p>Wed</p>
-          </div>
-          <div class="day-name-container">
-            <p>Fri</p>
-          </div>
+          <%})%>
         </div>
       </div>
       <div class="card-body text-dark">
-        <h2 class="card-title">Meditation</h2>
+        <h2 class="card-title"><%= habit.habitName %></h2>
         <div class="button-container">
-          <button class="btn btn-dark">Mark As Complete</button>
+          <a href="#" class="btn btn-dark">Mark As Complete</a>
           <a href="#" class="btn btn-dark">View History</a>
         </div>
       </div>
       <div class="card-footer text-body-secondary text-dark">
-        <h6>Total Target Days : 20</h6>
-        <h6>Completed : 0</h6>
+        <h6>Total Selected Days : <%= habit.totalTargetDays %></h6>
+        <h6>Total Target Days : <%= habit.habitStatus.length %></h6>
+        <h6>
+          Completed : <%= habit.habitStatus.filter((obj) => obj.dateStatus ==
+          'Started').length %>
+        </h6>
       </div>
     </div>
+    <%})%>
   </div>
 </div>

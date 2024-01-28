@@ -74,7 +74,7 @@
 }
 
 .allHabit {
-  width: 70%;
+  width: 90%;
   /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
@@ -131,6 +131,6 @@
   margin-top: 30px;
 }
 
-.button-container button {
+.button-container a {
   margin-right: 20px;
 }
