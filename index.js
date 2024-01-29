@@ -8,6 +8,8 @@ import expressEjsLayouts from "express-ejs-layouts";
 
 const app = new express();
 
+app.use(express.static("assets"));
+
 app.set("view engine", "ejs");
 app.set("views", path.join(path.resolve(), "views"));
 
@@ -15,8 +17,6 @@ app.use(expressEjsLayouts);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-app.use(express.static("assets"));
 
 app.use("/", homeRouter);
 app.use("/habit", fitnessRouter);

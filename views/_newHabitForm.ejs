@@ -21,6 +21,7 @@
           aria-label="Close"
         ></button>
       </div>
+
       <div class="modal-body">
         <form action="/habit/" method="post" enctype="multipart/form-data">
           <div class="mb-3">
@@ -30,6 +31,11 @@
               class="form-control"
               id="name"
               name="habitName"
+              minlength="3"
+              maxlength="30"
+              pattern="/^[A-Za-z]+$/"
+              title="It should only contain lower and uppercase character and length should be between 3 to 30"
+              required
             />
           </div>
 
@@ -42,13 +48,22 @@
               class="form-control"
               id="totalTargetDays"
               name="totalTargetDays"
+              min="7"
+              max="30"
+              title="It should be between 7 to 30 Days"
+              required
             />
           </div>
           <div class="mb-3">
             <label for="weeklyTarget" class="form-label"
               >Weekly Targeted Days</label
             >
-            <select name="weeklyTarget" id="weeklyTarget" multiple>
+            <select
+              name="weeklyTarget"
+              id="weeklyTarget"
+              multiple
+              title="It should not be empty"
+            >
               <option value="Sunday">Sunday</option>
               <option value="Monday">Monday</option>
               <option value="Tuesday">Tuesday</option>

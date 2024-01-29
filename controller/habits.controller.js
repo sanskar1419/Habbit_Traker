@@ -1,4 +1,3 @@
-import path from "path";
 import HabitRepository from "../repository/habit.repository.js";
 import HabitModel from "../model/habits.model.js";
 
@@ -13,6 +12,7 @@ export default class FitnessController {
       res.render("habits", {
         title: "Habits",
         habits: habits,
+        errorMessage: null,
       });
     } catch (err) {
       console.log(err);
@@ -23,13 +23,10 @@ export default class FitnessController {
   async addNewHabit(req, res) {
     try {
       let { habitName, totalTargetDays, weeklyTarget } = req.body;
-      // console.log(habitName);
-      // console.log(totalTargetDays);
-      // console.log(weeklyTarget);
       const newHabit = new HabitModel(habitName, totalTargetDays, weeklyTarget);
       const result = await this.habitRepository.add(newHabit);
       if (!result) {
-        return res.status(201).send("Record already Exist");
+        res.redirect("/habit/");
       } else {
         res.redirect("back");
       }
