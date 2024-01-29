@@ -132,11 +132,29 @@ export default class HabitRepository {
   }
 
   async getCurrentDate() {
-    let currentYear = new Date().getFullYear();
-    let currentMonth = new Date().getMonth();
-    let currentDate = new Date().getDate();
-    let currentMonthName = this.getMonths()[currentMonth];
-    const TodayDate = `${currentDate}-${currentMonthName}-${currentYear}`;
-    return TodayDate;
+    try {
+      let currentYear = new Date().getFullYear();
+      let currentMonth = new Date().getMonth();
+      let currentDate = new Date().getDate();
+      let currentMonthName = this.getMonths()[currentMonth];
+      const TodayDate = `${currentDate}-${currentMonthName}-${currentYear}`;
+      return TodayDate;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Something Went Wrong");
+    }
+  }
+
+  async toggleDateStatus(data) {
+    const result = await Status.updateOne(
+      { _id: data[1] },
+      { dateStatus: data[0] }
+    );
+    console.log(result);
+    try {
+    } catch (err) {
+      console.log(err);
+      throw new Error("Something Went Wrong");
+    }
   }
 }

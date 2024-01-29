@@ -37,9 +37,9 @@
           <a href="#" class="btn btn-dark">View History</a>
           <form action="/habit/toggle-status" method="post">
             <select name="dateStatus" id="dateStatus" class="btn btn-dark">
-              <option value="Not Yet Started" selected>Not Yet Started</option>
-              <option value="Completed">Completed</option>
-              <option value="Not Completed">Not Completed</option>
+              <option value="Not Yet Started,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Not Yet Started') {%>selected<%}%> >Not Yet Started</option>
+              <option value="Completed,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Completed') {%>selected<%}%> >Completed</option>
+              <option value="Not Completed,<%-habitStatus.id %>"  <%if(habitStatus.dateStatus == 'Not Completed') {%>selected<%}%> >Not Completed</option>
             </select>
             <button type="submit" class="btn btn-dark">Toggle Status</button>
           </form>

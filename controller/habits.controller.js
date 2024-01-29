@@ -55,7 +55,17 @@ export default class FitnessController {
   }
 
   async toggleStatus(req, res) {
-    console.log(req.body);
-    console.log(req.body.dateStatus);
+    try {
+      // console.log(req.body);
+      // console.log(req.body.dateStatus);
+      let { dateStatus } = req.body;
+      dateStatus = dateStatus.split(",");
+      // console.log(dateStatus);
+      await this.habitRepository.toggleDateStatus(dateStatus);
+      res.redirect("back");
+    } catch (err) {
+      console.log(err);
+      throw new Error("Something Went Wrong");
+    }
   }
 }
