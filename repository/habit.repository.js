@@ -130,4 +130,13 @@ export default class HabitRepository {
       throw new Error("Something Went Wrong");
     }
   }
+
+  async getCurrentDate() {
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth();
+    let currentDate = new Date().getDate();
+    let currentMonthName = this.getMonths()[currentMonth];
+    const TodayDate = `${currentDate}-${currentMonthName}-${currentYear}`;
+    return TodayDate;
+  }
 }

@@ -26,10 +26,12 @@ export default class FormDataMiddleware {
     console.log(validationErrors);
     if (!validationErrors.isEmpty()) {
       const habits = await this.habitRepository.get();
+      const todayDate = await this.habitRepository.getCurrentDate();
       res.render("habits", {
         title: "Habits",
         habits: habits,
         errorMessage: validationErrors.array()[0].msg,
+        todayDate: todayDate,
       });
     } else {
       next();

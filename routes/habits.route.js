@@ -29,4 +29,8 @@ fitnessRouter.post("/delete", (req, res) => {
   fitnessController.deleteExistingHabit(req, res);
 });
 
+fitnessRouter.post("/toggle-status", upload.none(), (req, res) => {
+  fitnessController.toggleStatus(req, res);
+});
+
 export default fitnessRouter;

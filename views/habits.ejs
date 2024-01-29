@@ -15,8 +15,12 @@
     <%- include('_newHabitForm'); %>
   </div>
   <div class="allHabit">
-    <% habits.forEach(habit => { %>
-    <div class="card text-center text-bg-primary mb-3">
+    <% habits.forEach(habit => { %> <% for(let habitStatus of habit.habitStatus)
+    { %> <%if(habitStatus.date == todayDate) {%>
+
+    <div
+      class="card text-center text-bg-primary mb-3 animate__animated animate__flipInX"
+    >
       <div class="card-header text-dark">
         <h6>Posted Date : <%= habit.createdAt %></h6>
         <div class="target-days-container">
@@ -30,8 +34,15 @@
       <div class="card-body text-dark">
         <h2 class="card-title"><%= habit.habitName %></h2>
         <div class="button-container">
-          <a href="#" class="btn btn-dark">Mark As Complete</a>
           <a href="#" class="btn btn-dark">View History</a>
+          <form action="/habit/toggle-status" method="post">
+            <select name="dateStatus" id="dateStatus" class="btn btn-dark">
+              <option value="Not Yet Started" selected>Not Yet Started</option>
+              <option value="Completed">Completed</option>
+              <option value="Not Completed">Not Completed</option>
+            </select>
+            <button type="submit" class="btn btn-dark">Toggle Status</button>
+          </form>
         </div>
       </div>
       <div class="card-footer text-body-secondary text-dark">
@@ -39,13 +50,14 @@
         <h6>Total Target Days : <%= habit.habitStatus.length %></h6>
         <h6>
           Completed : <%= habit.habitStatus.filter((obj) => obj.dateStatus ==
-          'Started').length %>
+          'Completed').length %>
         </h6>
         <button class="btn btn-dark" onclick="deleteProduct('<%= habit.id %>')">
           Delete Task
         </button>
       </div>
     </div>
-    <%})%>
+
+    <%}%> <%}%> <%})%>
   </div>
 </div>

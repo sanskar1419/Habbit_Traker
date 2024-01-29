@@ -1,5 +1,6 @@
 import HabitRepository from "../repository/habit.repository.js";
 import HabitModel from "../model/habits.model.js";
+import { body } from "express-validator";
 
 export default class FitnessController {
   constructor() {
@@ -8,11 +9,14 @@ export default class FitnessController {
   async getAllhabits(req, res) {
     try {
       const habits = await this.habitRepository.get();
+      const todayDate = await this.habitRepository.getCurrentDate();
+      console.log(todayDate);
       // res.status(200).send(habits);
       res.render("habits", {
         title: "Habits",
         habits: habits,
         errorMessage: null,
+        todayDate: todayDate,
       });
     } catch (err) {
       console.log(err);
@@ -48,5 +52,10 @@ export default class FitnessController {
       console.log(err);
       throw new Error("Something Went Wrong");
     }
+  }
+
+  async toggleStatus(req, res) {
+    console.log(req.body);
+    console.log(req.body.dateStatus);
   }
 }
