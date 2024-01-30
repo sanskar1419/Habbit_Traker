@@ -21,9 +21,9 @@
       <div class="card-footer text-body-warning">
         <form action="/habit/toggle-status" method="post">
           <select name="dateStatus" id="dateStatus" class="btn bg-dark-subtle select-btn">
-            <option value="Not Yet Started,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Not Yet Started') {%>selected<%}%> >Not Yet Started</option>
-            <option value="Completed,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Completed') {%>selected<%}%> >Completed</option>
-            <option value="Not Completed,<%-habitStatus.id %>"  <%if(habitStatus.dateStatus == 'Not Completed') {%>selected<%}%> >Not Completed</option>
+            <option value="Not Yet Started,<%-habitStatus.id %>,<%=habit.id %>" <%if(habitStatus.dateStatus == 'Not Yet Started') {%>selected<%}%> >Not Yet Started</option>
+            <option value="Completed,<%-habitStatus.id %>,<%=habit.id %>" <%if(habitStatus.dateStatus == 'Completed') {%>selected<%}%> >Completed</option>
+            <option value="Not Completed,<%-habitStatus.id %>,<%=habit.id %>"  <%if(habitStatus.dateStatus == 'Not Completed') {%>selected<%}%> >Not Completed</option>
           </select>
           <button type="submit" class="btn bg-dark-subtle">Toggle Status</button>
         </form>

@@ -146,11 +146,33 @@ export default class HabitRepository {
   }
 
   async toggleDateStatus(data) {
-    const result = await Status.updateOne(
-      { _id: data[1] },
-      { dateStatus: data[0] }
+    let currentDate = new Date();
+    let habitPassedStatus = await Status.findOne({ _id: data[1] });
+
+    let habitCurrentDate = habitPassedStatus.date.split("-");
+
+    const habitCurrentDateIndex = this.getMonths().findIndex(
+      (monthName) => monthName == habitCurrentDate[1]
     );
-    console.log(result);
+
+    let newHabitCurrentDate = new Date(
+      habitCurrentDate[2],
+      habitCurrentDateIndex,
+      habitCurrentDate[0]
+    );
+
+    console.log(currentDate);
+    console.log(newHabitCurrentDate);
+
+    if (newHabitCurrentDate <= currentDate) {
+      const result = await Status.updateOne(
+        { _id: data[1] },
+        { dateStatus: data[0] }
+      );
+    } else {
+      return "Can't modify upcoming date. Please come on same date";
+    }
+
     try {
     } catch (err) {
       console.log(err);

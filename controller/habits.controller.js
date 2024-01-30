@@ -1,6 +1,7 @@
 import HabitRepository from "../repository/habit.repository.js";
 import HabitModel from "../model/habits.model.js";
 import { body } from "express-validator";
+import Habit from "../schema/habit.schema.js";
 
 export default class FitnessController {
   constructor() {
@@ -61,7 +62,25 @@ export default class FitnessController {
       let { dateStatus } = req.body;
       dateStatus = dateStatus.split(",");
       // console.log(dateStatus);
-      await this.habitRepository.toggleDateStatus(dateStatus);
+      const result = await this.habitRepository.toggleDateStatus(dateStatus);
+      if (result) {
+        let habit = await Habit.findOne({ _id: dateStatus[2] }).populate(
+          "habitStatus"
+        );
+        const todayDate = await this.habitRepository.getCurrentDate();
+        const sevenDays = await this.habitRepository.getSevenDays(
+          habit.createdAt
+        );
+
+        // res.redirect("back");
+        return res.render("pastDetails", {
+          title: "Habit Past History",
+          errorMessage: "Can't modify upcoming date. Please come on same date",
+          todayDate: todayDate,
+          habit: habit,
+          sevenDays: sevenDays,
+        });
+      }
       res.redirect("back");
     } catch (err) {
       console.log(err);
@@ -75,9 +94,6 @@ export default class FitnessController {
     let habit = await this.habitRepository.pastHistory(id);
     const todayDate = await this.habitRepository.getCurrentDate();
     const sevenDays = await this.habitRepository.getSevenDays(habit.createdAt);
-
-    const result = habit.habitStatus.find((data) => data.date == "hggsvcgv");
-    console.log(result);
 
     // res.redirect("back");
     res.render("pastDetails", {

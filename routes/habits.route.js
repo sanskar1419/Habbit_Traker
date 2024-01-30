@@ -3,6 +3,7 @@ import FitnessController from "../controller/habits.controller.js";
 import multer from "multer";
 import FormDataMiddleware from "../middleware/newDatamiddleware.js";
 import HistoryRouter from "./pastHistory.route.js";
+import ToggleRouter from "./toggleTask.js";
 
 // 2. Initialize Express router.
 const fitnessRouter = express.Router();
@@ -30,9 +31,7 @@ fitnessRouter.post("/delete", (req, res) => {
   fitnessController.deleteExistingHabit(req, res);
 });
 
-fitnessRouter.post("/toggle-status", upload.none(), (req, res) => {
-  fitnessController.toggleStatus(req, res);
-});
+fitnessRouter.use("/toggle-status", ToggleRouter);
 
 fitnessRouter.use("/past-details", HistoryRouter);
 
