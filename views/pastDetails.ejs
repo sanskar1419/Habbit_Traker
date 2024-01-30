@@ -1,48 +1,42 @@
-<h1 style="text-align: center;">Past History</h1>
+<h1 style="text-align: center">Past History And Upcoming Dates</h1>
 
-<% for(let habitStatus of habit.habitStatus)
-    { %> 
+<div class="past-history-container">
+  <div class="seven-day-container">
+    <% for(let day of sevenDays) { %>
 
-    <div class="past-history-container">
-        <div
-      class="card text-center text-bg-dark mb-3 animate__animated animate__flipInX"
+    <div
+      class="card text-center mb-3 animate__animated animate__zoomInDown w-25 oneDay <% for(let habitStatus of habit.habitStatus) {%> <%if(habitStatus.date == day.formatDate && habitStatus.dateStatus == 'Not Yet Started'){%> text-bg-dark <%} else if(habitStatus.date == day.formatDate && habitStatus.dateStatus == 'Completed') {%> text-bg-success <%} else if(habitStatus.date == day.formatDate && habitStatus.dateStatus == 'Not Completed') {%> text-bg-danger <%}%> <%}%>"
     >
-      <div class="card-header">
-        <h6>Posted Date : <%= habitStatus.date %></h6>
-        <div class="target-days-container">
-          <% habit.weeklyTargetDays.forEach( dayName => { %>
-          <div class="day-name-container">
-            <p><%= dayName.slice(0,3) %></p>
-          </div>
-          <%})%>
+      <div class="card-header view-details">
+        <h6 style="text-align: center"><%= day.formatDate %></h6>
+      </div>
+      <div class="card-body view-details">
+        <div class="dayName bg-dark-subtle">
+          <h6><%- day.dayName %></h6>
         </div>
       </div>
-      <div class="card-body text-dark">
-        <h2 class="card-title"><%= habit.habitName %></h2>
-        <div class="button-container">
-          <a href="/habit/past-details/?id=<%- habit.id %>" class="btn btn-dark">View History</a>
-          <form action="/habit/toggle-status" method="post">
-            <select name="dateStatus" id="dateStatus" class="btn btn-dark">
-              <option value="Not Yet Started,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Not Yet Started') {%>selected<%}%> >Not Yet Started</option>
-              <option value="Completed,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Completed') {%>selected<%}%> >Completed</option>
-              <option value="Not Completed,<%-habitStatus.id %>"  <%if(habitStatus.dateStatus == 'Not Completed') {%>selected<%}%> >Not Completed</option>
-            </select>
-            <button type="submit" class="btn btn-dark">Toggle Status</button>
-          </form>
-        </div>
-      </div>
-      <div class="card-footer text-body-secondary text-dark">
-        <h6>Total Selected Days : <%= habit.totalTargetDays %></h6>
-        <h6>Total Target Days : <%= habit.habitStatus.length %></h6>
-        <h6>
-          Completed : <%= habit.habitStatus.filter((obj) => obj.dateStatus ==
-          'Completed').length %>
-        </h6>
-        <button class="btn btn-dark" onclick="deleteProduct('<%= habit.id %>')">
-          Delete Task
-        </button>
-      </div>
-    </div>
-    </div>
 
+      <% for(let habitStatus of habit.habitStatus) { %> <% if(habitStatus.date
+      == day.formatDate){%>
+      <div class="card-footer text-body-warning">
+        <form action="/habit/toggle-status" method="post">
+          <select name="dateStatus" id="dateStatus" class="btn bg-dark-subtle select-btn">
+            <option value="Not Yet Started,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Not Yet Started') {%>selected<%}%> >Not Yet Started</option>
+            <option value="Completed,<%-habitStatus.id %>" <%if(habitStatus.dateStatus == 'Completed') {%>selected<%}%> >Completed</option>
+            <option value="Not Completed,<%-habitStatus.id %>"  <%if(habitStatus.dateStatus == 'Not Completed') {%>selected<%}%> >Not Completed</option>
+          </select>
+          <button type="submit" class="btn bg-dark-subtle">Toggle Status</button>
+        </form>
+      </div>
+      <% }%> <%}%>
+
+      <% if(habit.habitStatus.find((data) => data.date == day.formatDate) == undefined ) { %>
+     <h6>Habit Is Not assigned for this date</h6>
+     <h6 style="color: gray;">Successful people are simply those with successful habits.</h6>
+      <%}%>
+    </div>
     <%}%>
+  </div>
+</div>
+
+

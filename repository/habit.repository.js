@@ -167,4 +167,64 @@ export default class HabitRepository {
       throw new Error("Something Went Wrong");
     }
   }
+
+  async getSevenDays(createdAt) {
+    try {
+      let sevenDays = [];
+      for (let i = 0; i < 7; i++) {
+        let currentYear = createdAt.getFullYear();
+        let currentMonth = createdAt.getMonth();
+        let currentDate = createdAt.getDate() + i;
+        let totalDaysInMonth = new Date(
+          currentYear,
+          currentMonth + 1,
+          0
+        ).getDate();
+
+        // console.log(currentYear, currentDate, currentMonth, totalDaysInMonth);
+        if (currentDate > totalDaysInMonth) {
+          currentDate = currentDate - totalDaysInMonth;
+          if (currentMonth != 11) {
+            currentMonth++;
+            totalDaysInMonth = new Date(
+              currentYear,
+              currentMonth + 1,
+              0
+            ).getDate();
+          } else {
+            currentMonth = 0;
+            currentYear++;
+            totalDaysInMonth = new Date(
+              currentYear,
+              currentMonth + 1,
+              0
+            ).getDate();
+          }
+        }
+        let currentDay = createdAt.getDay() + i;
+        if (currentDay >= 7) {
+          currentDay = currentDay % 7;
+        }
+        let currentDayName = this.getDay()[currentDay];
+        let currentMonthName = this.getMonths()[currentMonth];
+        let formatDate = `${currentDate}-${currentMonthName}-${currentYear}`;
+
+        let day = {
+          formatDate: formatDate,
+          year: currentYear,
+          date: currentDate,
+          month: currentMonth,
+          totalDaysInMonth: totalDaysInMonth,
+          dayName: currentDayName,
+          monthName: currentMonthName,
+        };
+
+        sevenDays.push(day);
+      }
+      return sevenDays;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Something Went Wrong");
+    }
+  }
 }

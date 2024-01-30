@@ -151,3 +151,40 @@
   align-items: center;
   margin-top: 30px;
 }
+
+.seven-day-container {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.oneDay {
+  margin: 20px;
+}
+
+.view-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dayName {
+  width: 135px;
+  height: 135px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.select-btn {
+  margin-bottom: 15px;
+}

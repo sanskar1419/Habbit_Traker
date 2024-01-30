@@ -10,7 +10,7 @@ export default class FitnessController {
     try {
       const habits = await this.habitRepository.get();
       const todayDate = await this.habitRepository.getCurrentDate();
-      console.log(todayDate);
+      // console.log(todayDate);
       // res.status(200).send(habits);
       res.render("habits", {
         title: "Habits",
@@ -74,11 +74,18 @@ export default class FitnessController {
     console.log(id);
     let habit = await this.habitRepository.pastHistory(id);
     const todayDate = await this.habitRepository.getCurrentDate();
+    const sevenDays = await this.habitRepository.getSevenDays(habit.createdAt);
+
+    const result = habit.habitStatus.find((data) => data.date == "hggsvcgv");
+    console.log(result);
+
+    // res.redirect("back");
     res.render("pastDetails", {
       title: "Habit Past History",
       errorMessage: null,
       todayDate: todayDate,
       habit: habit,
+      sevenDays: sevenDays,
     });
   }
 }
