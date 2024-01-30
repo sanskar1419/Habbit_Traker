@@ -2,17 +2,19 @@
 
 Habit_Tracker is a web application where we can add our day to day routine. In the application you can set the target of day till when you want to do. Similarly you can set the days in the week you want to practice. You can also toggle the previous seven day status.
 
-## Deployment_Link
+## Deployment
 
-## Languages
+To deploy this project run
 
-- EJS
-- CSS
-- JavaScript
+```bash
+  npm run deploy
+```
 
-## JavaScript Runtime
+## Tech Stack
 
--NodeJs
+**Client:** EJS, CSS, Bootstrap
+
+**Server:** Node, Express, MongoDB
 
 ## NPM Dependencies
 
