@@ -68,4 +68,17 @@ export default class FitnessController {
       throw new Error("Something Went Wrong");
     }
   }
+
+  async viewDetails(req, res) {
+    const { id } = req.query;
+    console.log(id);
+    let habit = await this.habitRepository.pastHistory(id);
+    const todayDate = await this.habitRepository.getCurrentDate();
+    res.render("pastDetails", {
+      title: "Habit Past History",
+      errorMessage: null,
+      todayDate: todayDate,
+      habit: habit,
+    });
+  }
 }

@@ -1,28 +1,14 @@
-<div class="habit-content">
-  <div class="new-habit-container">
-    <h2 class="animate__animated animate__flipInX">
-      Hurray, Want To Add New Habit ?
-    </h2>
-    <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-dark animate__animated animate__flipInX"
-      data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
-    >
-      Add New Habit
-    </button>
-    <%- include('_newHabitForm'); %>
-  </div>
-  <div class="allHabit">
-    <% habits.forEach(habit => { %> <% for(let habitStatus of habit.habitStatus)
-    { %> <%if(habitStatus.date == todayDate) {%>
+<h1 style="text-align: center;">Past History</h1>
 
-    <div
-      class="card text-center text-bg-primary mb-3 animate__animated animate__flipInX"
+<% for(let habitStatus of habit.habitStatus)
+    { %> 
+
+    <div class="past-history-container">
+        <div
+      class="card text-center text-bg-dark mb-3 animate__animated animate__flipInX"
     >
-      <div class="card-header text-dark">
-        <h6>Posted Date : <%= habit.createdAt %></h6>
+      <div class="card-header">
+        <h6>Posted Date : <%= habitStatus.date %></h6>
         <div class="target-days-container">
           <% habit.weeklyTargetDays.forEach( dayName => { %>
           <div class="day-name-container">
@@ -57,7 +43,6 @@
         </button>
       </div>
     </div>
+    </div>
 
-    <%}%> <%}%> <%})%>
-  </div>
-</div>
+    <%}%>

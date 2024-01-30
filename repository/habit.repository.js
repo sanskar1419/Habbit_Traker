@@ -157,4 +157,14 @@ export default class HabitRepository {
       throw new Error("Something Went Wrong");
     }
   }
+
+  async pastHistory(id) {
+    try {
+      let habit = await Habit.findOne({ _id: id }).populate("habitStatus");
+      return habit;
+    } catch (err) {
+      console.log(err);
+      throw new Error("Something Went Wrong");
+    }
+  }
 }
