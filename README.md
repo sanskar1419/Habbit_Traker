@@ -12,7 +12,7 @@ To deploy this project run
 
 ## Tech Stack
 
-**Client:** EJS, CSS, Bootstrap
+**Client:** EJS, CSS, Bootstrap, JavaScript
 
 **Server:** Node, Express, MongoDB
 

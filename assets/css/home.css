@@ -1,9 +1,3 @@
-.container-fluid img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
 /* Styling to the Container which Contain Whole page where we are going top see website*/
 .content-container {
   width: 100%;
