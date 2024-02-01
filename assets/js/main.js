@@ -1,6 +1,6 @@
 function deleteProduct(id) {
   //   console.log(id, " File is connected");
-  const result = confirm("Are you sure you want to delete this post?");
+  const result = confirm("Are you sure you want to delete this Habit?");
   if (result) {
     fetch("/habit/delete?id=" + id, {
       method: "POST",
