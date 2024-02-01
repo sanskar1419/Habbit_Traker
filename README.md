@@ -7,7 +7,7 @@ Habit_Tracker is a web application where we can add our day to day routine. In t
 To deploy this project run
 
 ```bash
-  npm run deploy
+ https://habit-tracker-gs4i.onrender.com
 ```
 
 ## Tech Stack
