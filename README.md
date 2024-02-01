@@ -52,7 +52,13 @@ $ npm i
 Start the application using the following command:
 
 ```
-$ npm start
+$ node server.js
+```
+
+or
+
+```
+$ nodemon server.js
 ```
 
 Open the application in your web browser by visiting the following URL:
@@ -60,3 +66,25 @@ Open the application in your web browser by visiting the following URL:
 ```
 $ http://localhost:8000
 ```
+
+## Screenshots
+
+### Home Page
+
+![Home](https://github.com/sanskar1419/Project_Screenshot/blob/master/CSV_Upload/Screenshot%202024-02-01%20151357.png?raw=true)
+
+### Add Habit and all habit assigned for that day
+
+![Habit](https://github.com/sanskar1419/Project_Screenshot/blob/master/Habit_Tracker/Screenshot%202024-02-01%20155952.png?raw=true)
+
+### View Page Table View
+
+![Habit](https://github.com/sanskar1419/Project_Screenshot/blob/master/Habit_Tracker/Screenshot%202024-02-01%20160013.png?raw=true)
+
+### Add new habit Modal
+
+![Habit](https://github.com/sanskar1419/Project_Screenshot/blob/master/Habit_Tracker/Screenshot%202024-02-01%20160025.png?raw=true)
+
+### Habit history and upcomming date
+
+![Habit history and upcomming date](https://github.com/sanskar1419/Project_Screenshot/blob/master/Habit_Tracker/Screenshot%202024-02-01%20160048.png?raw=true)
