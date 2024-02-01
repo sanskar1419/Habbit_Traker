@@ -1,12 +1,16 @@
+// Importing and creating instances of module and npm packages
 import HabitRepository from "../repository/habit.repository.js";
 import HabitModel from "../model/habits.model.js";
 import { body } from "express-validator";
 import Habit from "../schema/habit.schema.js";
 
+// Defining the class name FitnessController and all the controller method
 export default class FitnessController {
   constructor() {
+    // Creating the instance of HabitRepository
     this.habitRepository = new HabitRepository();
   }
+  // Method for rendering habit page
   async getAllhabits(req, res) {
     try {
       const habits = await this.habitRepository.get();
@@ -24,7 +28,7 @@ export default class FitnessController {
       throw new Error("Something Went Wrong");
     }
   }
-
+  // Method to add new Habit
   async addNewHabit(req, res) {
     try {
       let { habitName, totalTargetDays, weeklyTarget } = req.body;
@@ -41,6 +45,7 @@ export default class FitnessController {
     }
   }
 
+  // Method to delete a habit
   async deleteExistingHabit(req, res) {
     try {
       // console.log("Request is recieved");
@@ -55,13 +60,11 @@ export default class FitnessController {
     }
   }
 
+  // Method to toggleStatus based on id
   async toggleStatus(req, res) {
     try {
-      // console.log(req.body);
-      // console.log(req.body.dateStatus);
       let { dateStatus } = req.body;
       dateStatus = dateStatus.split(",");
-      // console.log(dateStatus);
       const result = await this.habitRepository.toggleDateStatus(dateStatus);
       if (result) {
         let habit = await Habit.findOne({ _id: dateStatus[2] }).populate(
@@ -88,6 +91,7 @@ export default class FitnessController {
     }
   }
 
+  // Method for rendering History and upcoming habit
   async viewDetails(req, res) {
     const { id } = req.query;
     console.log(id);

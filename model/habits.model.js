@@ -1,3 +1,4 @@
+// Defining the class name HabitModel
 export default class HabitModel {
   constructor(habitName, totalTargetDays, weeklyTargetDays, _id) {
     this.id = _id;

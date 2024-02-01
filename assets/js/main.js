@@ -1,3 +1,4 @@
+// Function to delete the a product
 function deleteProduct(id) {
   //   console.log(id, " File is connected");
   const result = confirm("Are you sure you want to delete this Habit?");

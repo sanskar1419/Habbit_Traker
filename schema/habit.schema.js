@@ -1,5 +1,7 @@
+// Importing and creating instances of module and npm packages
 import mongoose from "mongoose";
 
+// Defining Habit Schema
 export const habitSchema = new mongoose.Schema(
   {
     habitName: {
@@ -27,6 +29,8 @@ export const habitSchema = new mongoose.Schema(
   }
 );
 
+// Creating variable through which we will access the db
 const Habit = mongoose.model("Habit", habitSchema);
 
+// Exporting Habit
 export default Habit;

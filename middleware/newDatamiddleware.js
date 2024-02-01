@@ -1,10 +1,15 @@
+// Importing and creating instances of module and npm packages
 import HabitRepository from "../repository/habit.repository.js";
 import { body, validationResult } from "express-validator";
 
+// Defining the class name FormDataMiddleware
 export default class FormDataMiddleware {
   constructor() {
+    // Creating the instance of HabitRepository
     this.habitRepository = new HabitRepository();
   }
+
+  // Method for form validation using express validator
   async formProductValidating(req, res, next) {
     console.log(req.body);
     const rules = [
@@ -21,7 +26,10 @@ export default class FormDataMiddleware {
         .withMessage("Total Targeted Day should be between 7 to 30 Days"),
     ];
 
+    // Run all Validation
     await Promise.all(rules.map((rule) => rule.run(req)));
+
+    // Store validation result
     let validationErrors = validationResult(req);
     console.log(validationErrors);
     if (!validationErrors.isEmpty()) {
