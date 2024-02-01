@@ -2,12 +2,12 @@
 
 Habit_Tracker is a web application where we can add our day to day routine. In the application you can set the target of day till when you want to do. Similarly you can set the days in the week you want to practice. You can also toggle the previous seven day status.
 
-## Deployment
+## Deployment Link
 
-To deploy this project run
+To view the web application go to this link
 
 ```bash
- https://habit-tracker-gs4i.onrender.com
+   https://habit-tracker-gs4i.onrender.com
 ```
 
 ## Tech Stack
