@@ -71,7 +71,7 @@ $ http://localhost:8000
 
 ### Home Page
 
-![Home](https://github.com/sanskar1419/Project_Screenshot/blob/master/CSV_Upload/Screenshot%202024-02-01%20151357.png?raw=true)
+![Home](https://github.com/sanskar1419/Project_Screenshot/blob/master/Habit_Tracker/Screenshot%202024-02-01%20155931.png?raw=true)
 
 ### Add Habit and all habit assigned for that day
 
